@@ -1,0 +1,5 @@
+{{- /* Caixa de aviso dentro do texto. Uso: {{< aviso titulo="..." >}}texto{{< /aviso >}} */ -}}
+<aside class="aviso-caixa">
+  {{ with .Get "titulo" }}<p class="aviso-t">{{ . }}</p>{{ end }}
+  {{ .Inner | markdownify }}
+</aside>

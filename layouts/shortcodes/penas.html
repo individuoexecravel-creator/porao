@@ -1,0 +1,17 @@
+{{- /* As quatro penas do júri de 2003. */ -}}
+{{- $p := site.Data.altamira.penas -}}
+<figure class="grafico grafico-penas" aria-labelledby="gpe-t">
+  <figcaption class="grafico-cab">
+    <p class="grafico-t" id="gpe-t">As penas do júri de 2003, em anos de prisão</p>
+    <p class="grafico-d">Os quatro condenados negam os crimes e pediram revisão. Valentina de Andrade foi absolvida.</p>
+  </figcaption>
+  <ul class="barras">
+    {{- range $p }}
+    <li>
+      <span class="barra-nome">{{ .nome }} <small>{{ .papel }}</small></span>
+      <span class="barra-trilho"><span class="barra" style="width: {{ div (mul .anos 100.0) 92 }}%"></span><span class="barra-v">{{ .anos }} anos</span></span>
+    </li>
+    {{- end }}
+  </ul>
+  <p class="grafico-fonte">Fontes: STF, notícias de dezembro de 2004; Reuters, 2003.</p>
+</figure>

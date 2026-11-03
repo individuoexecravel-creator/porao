@@ -1,0 +1,13 @@
+{{- /* 42 confissões: 30 no Maranhão, 12 no Pará. */ -}}
+<figure class="grafico grafico-confissoes" aria-labelledby="gc-t">
+  <figcaption class="grafico-cab">
+    <p class="grafico-t" id="gc-t">As 42 mortes que Francisco das Chagas confessou</p>
+    <p class="grafico-d">Cada quadrado é um menino. Ele foi condenado no Maranhão. Pelos casos do Pará, só confessou.</p>
+  </figcaption>
+  <div class="quadros-42" role="img" aria-label="30 quadrados para o Maranhão e 12 para o Pará">
+    {{- range seq 30 }}<span class="q q-ma"></span>{{ end -}}
+    {{- range seq 12 }}<span class="q q-pa"></span>{{ end -}}
+  </div>
+  <p class="grafico-legenda"><span><i class="lg lg-ma"></i>30 no Maranhão (julgado e condenado)</span><span><i class="lg lg-pa"></i>12 no Pará (confessou; nunca julgado por Altamira)</span></p>
+  <p class="grafico-fonte">Fontes: ConJur, 2006; Senado Federal; Correio do Estado / Fantástico.</p>
+</figure>

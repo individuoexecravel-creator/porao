@@ -38,6 +38,15 @@
         <p class="ouvir-dica" data-ouvir-dica hidden></p>
       </div>
       {{- end }}
+      {{- with .Params.audiocast }}
+      <div class="mt-audiocast">
+        {{ partial "icone.html" "ouvir" }}
+        <p><strong>Audiocast {{ . }}.</strong> Este caso também vai virar uma caminhada em primeira pessoa, em preto e branco, com os documentos aparecendo na tela. Quando sair, o vídeo aparece aqui e nas redes.</p>
+      </div>
+      {{- end }}
+      {{- with .Params.aviso }}
+      <p class="mt-aviso">{{ . }}</p>
+      {{- end }}
     </div>
 
     <div class="mt-ficha papel" style="--giro:1.4deg">

@@ -1,0 +1,12 @@
+{{- /* Linha do tempo do processo, 1989–2012. */ -}}
+<figure class="grafico grafico-processo" aria-labelledby="gpr-t">
+  <figcaption class="grafico-cab">
+    <p class="grafico-t" id="gpr-t">Catorze anos até o júri</p>
+    <p class="grafico-d">Do primeiro ataque, em 1989, ao júri de Belém, em 2003. E o que veio depois.</p>
+  </figcaption>
+  <ol class="processo">
+    {{- range site.Data.altamira.processo }}
+    <li{{ if .destaque }} class="pr-destaque"{{ end }}><span class="pr-quando">{{ .quando }}</span><span class="pr-oque">{{ .o_que }}</span></li>
+    {{- end }}
+  </ol>
+</figure>

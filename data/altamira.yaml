@@ -1,0 +1,145 @@
+# Dados dos gráficos do dossiê "Os meninos de Altamira".
+# Datas e nomes conforme as fontes do dossiê (Lacerda; Wikipedia, lista de vítimas; Projeto Humanos).
+# tipo: sobreviveu | morto-desaparecido
+vitimas:
+  - data: 1989-08-02
+    mes: "ago. 1989"
+    nome: "Menino de 8 anos"
+    tipo: sobreviveu
+    nota: "Primeiro ataque conhecido. Foi achado ferido, vivo."
+  - data: 1990-07-23
+    mes: "jul. 1990"
+    nome: "Menino de 9 anos"
+    tipo: sobreviveu
+    nota: "Atacado dez dias depois da aprovação do ECA."
+  - data: 1991-01-15
+    mes: "jan. 1991"
+    nome: "Tito Mendes, 13 anos"
+    tipo: morto-desaparecido
+    nota: "Foi nadar num igarapé. Nunca foi encontrado."
+  - data: 1991-05-15
+    mes: "mai. 1991"
+    nome: "Ailton Fonseca, 10 anos"
+    tipo: morto-desaparecido
+    nota: "Restos achados 46 dias depois. O corpo sumiu no IML de Belém antes do exame."
+  - data: 1992-01-15
+    mes: "jan. 1992"
+    nome: "Jurdiley da Cunha, 13 anos"
+    tipo: morto-desaparecido
+  - data: 1992-04-15
+    mes: "abr. 1992"
+    nome: "Ednaldo de Souza Teixeira, 12 anos"
+    tipo: morto-desaparecido
+  - data: 1992-10-01
+    mes: "out. 1992"
+    nome: "Jaenes da Silva Pessoa, 13 anos"
+    tipo: morto-desaparecido
+    nota: "Cuidava do gado da família quando desapareceu."
+  - data: 1992-11-15
+    mes: "nov. 1992"
+    nome: "Klebson Ferreira Caldas, 13 anos"
+    tipo: morto-desaparecido
+  - data: 1992-12-15
+    mes: "dez. 1992"
+    nome: "Maurício Farias de Souza, 12 anos"
+    tipo: morto-desaparecido
+    nota: "Visto pela última vez com um homem de bicicleta vermelha. Nunca foi encontrado."
+  - data: 1993-01-15
+    mes: "jan. 1993"
+    nome: "Renan Santos de Souza, 9 anos"
+    tipo: morto-desaparecido
+    nota: "Foi brincar na beira do Xingu e não voltou."
+  - data: 1993-03-15
+    mes: "mar. 1993"
+    nome: "Flávio Lopes da Silva, 10 anos"
+    tipo: morto-desaparecido
+  - data: 1993-07-09
+    mes: "jul. 1993"
+    nome: "Menino engraxate"
+    tipo: morto-desaparecido
+    nota: "Deixou a caixa de trabalho num supermercado e desapareceu."
+
+# Brasil × Altamira (gráfico de linhas paralelas)
+paralelo:
+  - ano: 1989.6
+    rotulo: "ago. 1989"
+    brasil: ""
+    altamira: "Primeiro ataque conhecido"
+  - ano: 1989.86
+    rotulo: "nov.–dez. 1989"
+    brasil: "Primeira eleição direta para presidente desde 1960"
+    altamira: ""
+  - ano: 1990.2
+    rotulo: "mar. 1990"
+    brasil: "Collor toma posse e bloqueia a poupança"
+    altamira: ""
+  - ano: 1990.53
+    rotulo: "13 jul. 1990"
+    brasil: "Aprovado o Estatuto da Criança e do Adolescente"
+    altamira: ""
+  - ano: 1990.56
+    rotulo: "23 jul. 1990"
+    brasil: ""
+    altamira: "Menino de 9 anos atacado, dez dias depois"
+  - ano: 1992.45
+    rotulo: "jun. 1992"
+    brasil: "Eco-92 discute a Amazônia no Rio"
+    altamira: ""
+  - ano: 1992.74
+    rotulo: "29 set. 1992"
+    brasil: "Câmara autoriza o impeachment de Collor"
+    altamira: ""
+  - ano: 1992.75
+    rotulo: "1º out. 1992"
+    brasil: ""
+    altamira: "Jaenes, 13 anos, desaparece"
+  - ano: 1992.76
+    rotulo: "2 out. 1992"
+    brasil: "Massacre do Carandiru: 111 presos mortos"
+    altamira: ""
+  - ano: 1993.52
+    rotulo: "jul. 1993"
+    brasil: "Chacina da Candelária, no Rio (23 jul.)"
+    altamira: "Menino engraxate desaparece (9 jul.)"
+
+penas:
+  - nome: "Anísio Ferreira de Sousa"
+    papel: "médico"
+    anos: 77
+  - nome: "Amailton Madeira Gomes"
+    papel: "filho de empresário"
+    anos: 57
+  - nome: "Césio Flávio Caldas Brandão"
+    papel: "médico"
+    anos: 56
+  - nome: "Carlos Alberto Santos Lima"
+    papel: "ex-policial militar"
+    anos: 35
+
+processo:
+  - quando: "ago. 1989"
+    o_que: "Primeiro ataque conhecido em Altamira."
+  - quando: "1990"
+    o_que: "A polícia prende um andarilho, Rotílio de Souza. Ele morre na prisão meses depois. Os ataques continuam."
+  - quando: "1993"
+    o_que: "Caso reaberto com a tese da seita. Sete pessoas são indiciadas. Os dois médicos voltam a ser presos."
+  - quando: "set. 1993"
+    o_que: "A Justiça aceita a denúncia."
+  - quando: "1994"
+    o_que: "O promotor-chefe pede que os réus não vão a júri, por falta de provas. Em junho, o juiz manda todos a júri."
+  - quando: "mar. 1995"
+    o_que: "A testemunha Edmilson Frazão desmente o próprio depoimento e, três dias depois, desmente o desmentido."
+  - quando: "ago.–set. 1995"
+    o_que: "O Tribunal de Justiça do Pará solta Césio Brandão, após mais de dois anos preso. Os outros saem em seguida."
+  - quando: "ago.–set. 2003"
+    o_que: "Júri em Belém condena quatro homens."
+    destaque: true
+  - quando: "dez. 2003"
+    o_que: "Valentina de Andrade é absolvida por 6 votos a 1. No mesmo mês, Francisco das Chagas é preso no Maranhão."
+    destaque: true
+  - quando: "jul. 2004"
+    o_que: "A Polícia Federal leva Chagas a Altamira. Ele aponta locais."
+  - quando: "dez. 2004"
+    o_que: "Liminares do STF soltam Césio, Anísio e Amailton até o fim dos recursos."
+  - quando: "2012"
+    o_que: "A condenação de Césio Brandão se torna definitiva."

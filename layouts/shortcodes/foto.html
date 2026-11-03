@@ -1,0 +1,13 @@
+{{- /* Foto com crédito. Uso:
+  {{< foto commons="Nome_do_arquivo.jpg" legenda="..." >}}  → imagem do Wikimedia Commons, crédito com link para a página do arquivo
+  {{< foto src="img/casos/arquivo.jpg" legenda="..." credito="Autor / licença" >}} → imagem enviada para static/img */ -}}
+{{- $c := .Get "commons" -}}
+{{- $src := cond (ne $c "") (print "https://commons.wikimedia.org/wiki/Special:FilePath/" $c "?width=1280") ((.Get "src") | relURL) -}}
+<figure class="foto papel" style="--giro:{{ .Get "giro" | default "-.6deg" }}">
+  <span class="fita" aria-hidden="true"></span>
+  <span class="foto-img"><img src="{{ $src }}" alt="{{ .Get "alt" | default (.Get "legenda") }}" loading="lazy" referrerpolicy="no-referrer"></span>
+  <figcaption>
+    <span class="foto-leg">{{ .Get "legenda" }}</span>
+    <span class="foto-cred">{{ with $c }}Foto: <a href="https://commons.wikimedia.org/wiki/File:{{ . }}" rel="noopener" target="_blank">Wikimedia Commons</a> (licença livre; autor e licença na página do arquivo){{ else }}{{ .Get "credito" }}{{ end }}</span>
+  </figcaption>
+</figure>

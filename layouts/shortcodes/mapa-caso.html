@@ -1,0 +1,37 @@
+{{- /* Mapa do caso: Altamira e as outras cidades da história. Contorno: svg-maps (Victor Cazanave), CC BY 4.0. */ -}}
+{{- $m := site.Data.brasil_mapa -}}
+<figure class="grafico grafico-mapa" aria-labelledby="gm-t">
+  <figcaption class="grafico-cab">
+    <p class="grafico-t" id="gm-t">As quatro cidades do caso</p>
+    <p class="grafico-d">Altamira, onde os meninos foram atacados; Belém, onde houve o júri; Guaratuba, onde o grupo de Valentina de Andrade estava em 1992; e São Luís, onde Francisco das Chagas foi preso.</p>
+  </figcaption>
+  <svg viewBox="150 40 400 500" class="grafico-svg mapa-svg" role="img" aria-label="Mapa do Brasil com Altamira, Belém, São Luís e Guaratuba marcadas">
+    <g filter="url(#lapis)">
+      {{- range $m.locations }}
+      <path d="{{ .path }}" class="uf{{ if eq .id "pa" }} uf-pa{{ end }}{{ if eq .id "ma" }} uf-ma{{ end }}"/>
+      {{- end }}
+    </g>
+    <g class="mapa-linhas">
+      <path d="M340.4 131.8 Q365 95 398.4 104.7"/>
+      <path d="M340.4 131.8 Q400 150 463.7 121.4"/>
+      <path d="M340.4 131.8 Q330 330 397 498"/>
+    </g>
+    <g class="mapa-pontos">
+      <circle cx="340.4" cy="131.8" r="7" class="mp-principal"/>
+      <circle cx="398.4" cy="104.7" r="4.5"/>
+      <circle cx="463.7" cy="121.4" r="4.5"/>
+      <circle cx="397" cy="498" r="4.5"/>
+    </g>
+    <g class="mapa-rotulos">
+      <text x="300" y="160" class="mr-principal">Altamira</text>
+      <text x="300" y="176" class="mr-nota">ataques, 1989–1993</text>
+      <text x="395" y="78">Belém</text>
+      <text x="395" y="62" class="mr-nota">júri, 2003</text>
+      <text x="472" y="112">São Luís</text>
+      <text x="472" y="98" class="mr-nota">Chagas, 2003</text>
+      <text x="410" y="503">Guaratuba</text>
+      <text x="410" y="519" class="mr-nota">LUS, 1992</text>
+    </g>
+  </svg>
+  <p class="grafico-fonte">Contorno dos estados: svg-maps, de Victor Cazanave (CC BY 4.0). Posições aproximadas.</p>
+</figure>

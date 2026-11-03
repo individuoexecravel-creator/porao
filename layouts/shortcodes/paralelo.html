@@ -1,0 +1,18 @@
+{{- /* Brasil × Altamira, 1989–1993: duas linhas do tempo paralelas. */ -}}
+{{- $ev := site.Data.altamira.paralelo -}}
+<figure class="grafico grafico-paralelo" aria-labelledby="gp-t">
+  <figcaption class="grafico-cab">
+    <p class="grafico-t" id="gp-t">Brasil × Altamira, 1989–1993</p>
+    <p class="grafico-d">O que o país discutia nas mesmas semanas dos ataques.</p>
+  </figcaption>
+  <ol class="paralelo">
+    <li class="paralelo-cab" aria-hidden="true"><span></span><span>Brasil</span><span>Altamira</span></li>
+    {{- range $ev }}
+    <li>
+      <span class="pa-data">{{ .rotulo }}</span>
+      <span class="pa-br">{{ with .brasil }}{{ . }}{{ end }}</span>
+      <span class="pa-alt">{{ with .altamira }}<b>{{ . }}</b>{{ end }}</span>
+    </li>
+    {{- end }}
+  </ol>
+</figure>
