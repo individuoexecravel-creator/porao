@@ -1,0 +1,25 @@
+{{- /* Fim do dossiê: fontes, datas e correções. */ -}}
+<section class="fontes" aria-labelledby="fontes-t">
+  <h2 id="fontes-t">Fontes e leitura complementar</h2>
+  {{ with .Params.fontes }}
+  <ol class="fontes-lista">
+    {{ range . }}{{ $f := . }}
+    <li>
+      {{ if .url }}<a href="{{ .url }}" rel="noopener" target="_blank">{{ .titulo }}<span class="sr"> (abre em nova aba)</span></a>{{ else }}{{ .titulo }}{{ end }}
+      {{ with .veiculo }}<span class="fonte-veiculo">{{ . }}{{ with $f.ano }}, {{ . }}{{ end }}</span>{{ end }}
+    </li>
+    {{ end }}
+  </ol>
+  {{ end }}
+  <dl class="datas">
+    <div><dt>Publicado em</dt><dd><time datetime="{{ .Date.Format "2006-01-02" }}">{{ partial "data.html" .Date }}</time></dd></div>
+    {{ if and .Params.lastmod (gt .Lastmod.Unix .Date.Unix) }}<div><dt>Atualizado em</dt><dd><time datetime="{{ .Lastmod.Format "2006-01-02" }}">{{ partial "data.html" .Lastmod }}</time></dd></div>{{ end }}
+  </dl>
+  {{ with .Params.correcoes }}
+  <div class="correcoes">
+    <h3>Correções e atualizações</h3>
+    <ul>{{ range . }}<li><time datetime="{{ .data }}">{{ partial "data.html" (time .data) }}</time>: {{ .texto | markdownify }}</li>{{ end }}</ul>
+  </div>
+  {{ end }}
+  <p class="fontes-erro">Encontrou um erro, ou é familiar de uma vítima e quer que algo seja revisto? {{ with index site.Params.redes 0 }}Mande uma mensagem no <a href="{{ .url }}" rel="noopener" target="_blank">{{ .nome }}<span class="sr"> (abre em nova aba)</span></a>.{{ end }} Toda correção fica registrada aqui, com a data.</p>
+</section>

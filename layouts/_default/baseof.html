@@ -1,26 +1,19 @@
 <!doctype html>
 <html lang="pt-br">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ if .IsHome }}{{ site.Title }} · {{ site.Params.tagline }}{{ else }}{{ .Title }} · {{ site.Title }}{{ end }}</title>
-  <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ site.Params.description }}{{ end }}">
-  <meta name="theme-color" content="#0b0b0b">
-  <meta property="og:title" content="{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }}{{ end }}">
-  <meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}{{ site.Params.description }}{{ end }}">
-  <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
-  <link rel="icon" href="{{ "img/favicon.svg" | relURL }}" type="image/svg+xml">
-  <link rel="preload" href="{{ "fonts/special-elite-latin-400-normal.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="{{ "css/porao.css" | relURL }}">
+  {{- /* Tema e tamanho do texto: as mesmas preferências do Portal (mesmo endereço, mesmo navegador). */}}
+  <script>try{var d=document.documentElement,t=localStorage.getItem("portal-tema"),e=parseFloat(localStorage.getItem("portal-escala"));if(t==="claro")d.setAttribute("data-tema","claro");if(e>=.85&&e<=1.4)d.style.setProperty("--escala",e)}catch(_){}</script>
+  <title>{{ if .IsHome }}{{ site.Title }} · {{ site.Params.slogan }}{{ else }}{{ .Title }} · {{ site.Title }}{{ end }}</title>
+  {{ partial "cabeca.html" . }}
   {{ with .OutputFormats.Get "rss" }}<link rel="alternate" type="application/rss+xml" href="{{ .RelPermalink }}" title="{{ site.Title }}">{{ end }}
 </head>
-<body>
-  <a class="pular" href="#conteudo">Pular para o conteúdo</a>
+<body class="{{ with .Section }}sec-{{ . }}{{ end }}{{ if .IsPage }} e-materia{{ end }}">
   {{ partial "filtros.html" . }}
   {{ partial "topo.html" . }}
-  <main id="conteudo">
+  <main id="conteudo" tabindex="-1">
     {{ block "main" . }}{{ end }}
   </main>
   {{ partial "rodape.html" . }}
+  {{ if .IsPage }}<button class="ir-topo" type="button" aria-label="Voltar ao topo" hidden>{{ partial "icone.html" "topo" }}</button>{{ end }}
 </body>
 </html>

@@ -1,7 +1,7 @@
 ---
 title: "Sobre o Porão"
 rotulo: "Como contamos"
-description: "O que é o Porão e as regras que seguimos ao contar cada caso."
+description: "O que é o Porão, quem escreve e as regras de cada dossiê."
 ---
 O Porão é a ala de crimes reais do **Indivíduo Execrável**. Enquanto [O Portal](https://individuoexecravel-creator.github.io/portal/) cuida dos escândalos da política, aqui ficam os casos criminais graves que atingiram gente comum: crimes que marcaram cidades, famílias e, muitas vezes, ficaram sem resposta.
 
@@ -16,6 +16,10 @@ O Porão é a ala de crimes reais do **Indivíduo Execrável**. Enquanto [O Port
 ## O formato
 
 Cada dossiê também vira um audiocast: uma caminhada em primeira pessoa, em preto e branco, pelos lugares do crime, com documentos e imagens surgindo na tela no momento em que são citados.
+
+## Conforto de leitura
+
+No alto da página, **Leitura** troca o tema (escuro ou claro) e o tamanho do texto. **Buscar** procura um caso pelo nome, pela cidade ou pelo ano (atalho: tecla `/`). Em cada dossiê, **Ouvir** lê o texto em voz alta com a voz do seu navegador. As escolhas ficam salvas no navegador e valem também para O Portal.
 
 ## Correções
 

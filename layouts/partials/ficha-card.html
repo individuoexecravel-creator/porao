@@ -1,17 +1,15 @@
-{{/* Cartão de caso usado nas listas. Recebe a página do caso. */}}
+{{/* Ficha de caso usada nas listas. Recebe a página do caso. */}}
 <article class="ficha-card">
-  <a href="{{ .RelPermalink }}" class="ficha-card__link">
+  <a href="{{ .RelPermalink }}" class="ficha-card-link" data-lido="{{ .File.ContentBaseName }}">
     <span class="alfinete" aria-hidden="true"></span>
-    <div class="ficha-card__foto">
-      {{ with .Params.capa }}
-        <img src="{{ . | relURL }}" alt="" loading="lazy">
-      {{ else }}
-        {{ partial "digital.html" . }}
-      {{ end }}
-    </div>
-    <p class="ficha-card__num">Arquivo nº {{ with .Params.numero }}{{ printf "%03d" . }}{{ else }}—{{ end }}</p>
-    <h3 class="ficha-card__titulo">{{ .Title }}</h3>
-    <p class="ficha-card__meta">{{ with .Params.local }}{{ . }}{{ end }}{{ with .Params.periodo }} · {{ . }}{{ end }}</p>
-    {{ with .Params.situacao }}<span class="carimbo-txt">{{ . }}</span>{{ end }}
+    <span class="ficha-card-foto">
+      {{ with .Params.capa }}<img src="{{ . | relURL }}" alt="" loading="lazy">{{ else }}{{ partial "digital.html" . }}{{ end }}
+    </span>
+    <span class="ficha-card-texto">
+      <span class="ficha-card-num">Arquivo nº {{ with .Params.numero }}{{ printf "%03d" (int .) }}{{ else }}—{{ end }}</span>
+      <span class="ficha-card-titulo">{{ .Title }}</span>
+      <span class="ficha-card-meta">{{ with .Params.local }}{{ . }}{{ end }}{{ with .Params.periodo }} · {{ . }}{{ end }}</span>
+    </span>
+    {{ with .Params.situacao }}<span class="carimbo carimbo-p">{{ . }}</span>{{ end }}
   </a>
 </article>

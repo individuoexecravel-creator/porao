@@ -1,0 +1,3 @@
+{{- /* Data por extenso: 3 de novembro de 2026 */ -}}
+{{- $m := slice "janeiro" "fevereiro" "março" "abril" "maio" "junho" "julho" "agosto" "setembro" "outubro" "novembro" "dezembro" -}}
+{{- printf "%d de %s de %d" .Day (index $m (sub (int .Month) 1)) .Year -}}

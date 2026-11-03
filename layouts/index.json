@@ -1,0 +1,16 @@
+{{- /* Índice para a busca do topo: um item por caso. */ -}}
+{{- $itens := slice -}}
+{{- range where site.RegularPages "Section" "casos" -}}
+  {{- $itens = $itens | append (dict
+      "t" .Title
+      "d" .Description
+      "u" .RelPermalink
+      "sec" (print "Arquivo nº " (printf "%03d" (int (.Params.numero | default 0))))
+      "per" (.Params.periodo | default "")
+      "loc" (.Params.local | default "")
+      "sit" (.Params.situacao | default "")
+      "img" (cond (isset .Params "capa") (.Params.capa | relURL) "")
+      "f" (.Plain | truncate 600)
+  ) -}}
+{{- end -}}
+{{- $itens | jsonify -}}

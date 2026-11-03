@@ -1,9 +1,13 @@
 {{ define "main" }}
-<article class="secao secao--pagina pagina">
-  <header class="secao__topo">
-    <p class="rotulo">{{ with .Params.rotulo }}{{ . }}{{ else }}O Porão{{ end }}</p>
-    <h1 class="secao__titulo">{{ .Title }}</h1>
-  </header>
-  <div class="dossie__texto">{{ .Content }}</div>
-</article>
+<header class="wrap cabeca-lista">
+  <nav class="trilha" aria-label="Você está em"><a href="{{ site.Home.RelPermalink }}">Início</a><span aria-hidden="true">›</span><span aria-current="page">{{ .Title }}</span></nav>
+  <h1>{{ .Title }}</h1>
+  {{ with .Description }}<p class="linha">{{ . }}</p>{{ end }}
+</header>
+<div class="wrap materia materia-simples">
+  <article class="texto">
+    {{ .Content }}
+    {{ partial "autor.html" . }}
+  </article>
+</div>
 {{ end }}

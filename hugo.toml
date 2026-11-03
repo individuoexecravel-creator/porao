@@ -1,28 +1,56 @@
 baseURL = "https://individuoexecravel-creator.github.io/porao/"
 languageCode = "pt-br"
 title = "O Porão"
+summaryLength = 40
 
 [params]
   description = "Casos criminais graves do Brasil, reconstruídos com documentos e respeito às vítimas."
-  tagline = "Crimes que o Brasil tentou esquecer."
+  slogan = "Arquivo de crimes reais"
+  # Link para o site irmão, de escândalos políticos
   portal = "https://individuoexecravel-creator.github.io/portal/"
-  autor = "Indivíduo Execrável"
 
-[taxonomies]
-  estado = "estados"
+  [params.autor]
+    nome = "Indivíduo Execrável"
+    funcao = "Jornalista em formação, dedicado a casos políticos e criminais"
+    bio = "No Porão, reconstrói crimes graves que marcaram o país a partir de inquéritos, processos, laudos e reportagens da época. As vítimas e suas famílias vêm antes de qualquer detalhe, e o que não tem documento aparece como tal."
+
+  # Redes sociais: cole o link de cada perfil entre as aspas.
+  # Redes com o link vazio não aparecem no site.
+  [[params.redes]]
+    nome = "Instagram"
+    url = "https://www.instagram.com/individuo_execravel/"
+  [[params.redes]]
+    nome = "TikTok"
+    url = "https://www.tiktok.com/@indivduo.execrvel"
+  [[params.redes]]
+    nome = "YouTube"
+    url = "https://www.youtube.com/@IndividuoExecravel"
+  [[params.redes]]
+    nome = "X"
+    url = "https://x.com/indiv_execravel"
+  [[params.redes]]
+    nome = "Threads"
+    url = "https://www.threads.com/@individuo_execravel"
 
 [pagination]
   pagerSize = 12
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
 
 [menus]
   [[menus.main]]
     name = "Arquivo"
     pageRef = "/casos"
     weight = 1
+    [menus.main.params]
+      icone = "casos"
   [[menus.main]]
     name = "Sobre"
     pageRef = "/sobre"
     weight = 2
-
-[markup.goldmark.renderer]
-  unsafe = true
+    [menus.main.params]
+      icone = "ajuda"

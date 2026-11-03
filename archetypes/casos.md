@@ -9,6 +9,7 @@ vitimas: ""
 situacao: "Em aberto"
 capa: ""
 video: ""
+audio: ""
 fontes:
   - titulo: "Título da fonte"
     veiculo: "Veículo ou órgão"

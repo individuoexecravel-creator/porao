@@ -1,40 +1,101 @@
 {{ define "main" }}
-<article class="dossie">
-  <header class="dossie__ficha papel" style="--giro:-.6deg">
-    <span class="alfinete" aria-hidden="true"></span>
-    <p class="dossie__num">Arquivo nº {{ with .Params.numero }}{{ printf "%03d" . }}{{ else }}—{{ end }}</p>
-    <h1 class="dossie__titulo">{{ .Title }}</h1>
-    {{ with .Description }}<p class="dossie__resumo">{{ . }}</p>{{ end }}
-    <dl class="dossie__campos">
-      {{ with .Params.local }}<div><dt>Local</dt><dd>{{ . }}</dd></div>{{ end }}
-      {{ with .Params.periodo }}<div><dt>Período</dt><dd>{{ . }}</dd></div>{{ end }}
-      {{ with .Params.vitimas }}<div><dt>Vítimas</dt><dd>{{ . }}</dd></div>{{ end }}
-      {{ with .Params.situacao }}<div><dt>Situação</dt><dd>{{ . }}</dd></div>{{ end }}
-    </dl>
-    {{ with .Params.situacao }}<span class="carimbo-txt carimbo-txt--grande">{{ . }}</span>{{ end }}
-  </header>
+{{ $num := cond (isset .Params "numero") (printf "%03d" (int .Params.numero)) "—" }}
+<header class="materia-topo">
+  <div class="wrap mt-in">
+    <div class="mt-texto">
+      <nav class="trilha" aria-label="Você está em">
+        <a href="{{ site.Home.RelPermalink }}">Início</a><span aria-hidden="true">›</span>
+        <a href="{{ "casos/" | relURL }}">Arquivo</a>
+      </nav>
+      <p class="mt-periodo"><span class="mt-dossie">Dossiê nº {{ $num }}</span>{{ with .Params.periodo }}<span>{{ . }}</span>{{ end }}{{ with .Params.local }}<span>{{ . }}</span>{{ end }}</p>
+      <h1>{{ .Title }}</h1>
+      {{ with .Description }}<p class="linha-fina">{{ . }}</p>{{ end }}
+      <div class="meta-linha">
+        <p class="meta">Por <a href="{{ "sobre/" | relURL }}">{{ site.Params.autor.nome }}</a>, {{ .ReadingTime }} min de leitura<br>
+          <span class="meta-data">Publicado em <time datetime="{{ .Date.Format "2006-01-02" }}">{{ partial "data.html" .Date }}</time>{{ if and .Params.lastmod (gt .Lastmod.Unix .Date.Unix) }} · <a href="#fontes-t">atualizado em {{ partial "data.html" .Lastmod }}</a>{{ end }}</span>
+          <span class="lido-selo" data-lido-selo hidden>{{ partial "icone.html" "ok" }}Você já leu este dossiê</span></p>
+        <div class="meta-acoes">
+          {{- if not .Params.audio }}
+          <div class="ouvir" data-ouvir hidden>
+            <button class="botao botao-fino" type="button" data-ouvir-play aria-pressed="false" aria-controls="ouvir-painel"><span class="i-play">{{ partial "icone.html" "ouvir" }}</span><span class="i-pausa">{{ partial "icone.html" "pausa" }}</span><span data-ouvir-rot>Ouvir</span></button>
+            <button class="botao-icone" type="button" data-ouvir-parar aria-label="Parar a leitura em voz alta" hidden>{{ partial "icone.html" "parar" }}</button>
+          </div>
+          {{- end }}
+          <button class="botao botao-fino" type="button" data-compartilhar data-titulo="{{ .Title }}">{{ partial "icone.html" "compartilhar" }}<span>Compartilhar</span></button>
+        </div>
+      </div>
+      {{- with .Params.audio }}
+      <div class="ouvir-arquivo">
+        <p class="ouvir-t">{{ partial "icone.html" "ouvir" }}Ouça este caso narrado</p>
+        <audio controls preload="none" src="{{ (print "audio/" .) | relURL }}">Seu navegador não toca áudio. <a href="{{ (print "audio/" .) | relURL }}">Baixe o arquivo</a>.</audio>
+      </div>
+      {{- else }}
+      <div class="ouvir-painel" id="ouvir-painel" data-ouvir-painel hidden>
+        <label class="ouvir-campo"><span>Voz</span><select data-ouvir-voz></select></label>
+        <label class="ouvir-campo"><span>Velocidade</span>
+          <select data-ouvir-vel><option value="0.9">Mais devagar</option><option value="1" selected>Normal</option><option value="1.15">Um pouco mais rápida</option><option value="1.3">Rápida</option></select>
+        </label>
+        <p class="ouvir-dica" data-ouvir-dica hidden></p>
+      </div>
+      {{- end }}
+    </div>
 
-  {{ with .Params.video }}
-  <div class="dossie__video">
-    <iframe src="https://www.youtube-nocookie.com/embed/{{ . }}" title="Audiocast do caso" loading="lazy" allowfullscreen></iframe>
-  </div>
-  {{ end }}
-
-  <div class="dossie__texto">
-    {{ .Content }}
-  </div>
-
-  {{ with .Params.fontes }}
-  <section class="dossie__fontes" aria-labelledby="fontes-t">
-    <h2 id="fontes-t">Fontes</h2>
-    <ol>
-      {{ range . }}
-        <li>{{ if .url }}<a href="{{ .url }}" rel="noopener">{{ .titulo }}</a>{{ else }}{{ .titulo }}{{ end }}{{ with .veiculo }} — {{ . }}{{ end }}</li>
+    <div class="mt-ficha papel" style="--giro:1.4deg">
+      <span class="alfinete" aria-hidden="true"></span>
+      {{ with .Params.capa }}
+      <div class="mt-foto"><img src="{{ . | relURL }}" alt="" fetchpriority="high"></div>
       {{ end }}
-    </ol>
-  </section>
-  {{ end }}
+      <p class="mt-ficha-num">Arquivo nº {{ $num }}</p>
+      <dl class="mt-campos">
+        {{ with .Params.local }}<div><dt>Local</dt><dd>{{ . }}</dd></div>{{ end }}
+        {{ with .Params.periodo }}<div><dt>Período</dt><dd>{{ . }}</dd></div>{{ end }}
+        {{ with .Params.vitimas }}<div><dt>Vítimas</dt><dd>{{ . }}</dd></div>{{ end }}
+        {{ with .Params.situacao }}<div><dt>Situação</dt><dd>{{ . }}</dd></div>{{ end }}
+      </dl>
+      {{ with .Params.situacao }}<span class="carimbo">{{ . }}</span>{{ end }}
+    </div>
+  </div>
+</header>
 
-  <p class="dossie__voltar"><a href="{{ "casos/" | relURL }}">← Voltar ao arquivo</a></p>
-</article>
+{{ with .Params.video }}
+<div class="wrap mt-video">
+  <iframe src="https://www.youtube-nocookie.com/embed/{{ . }}" title="Audiocast do caso" loading="lazy" allowfullscreen></iframe>
+</div>
+{{ end }}
+
+<div class="wrap materia">
+  <aside class="lateral">
+    <nav class="sumario" aria-labelledby="sumario-t" hidden data-sumario>
+      <h2 id="sumario-t">Neste dossiê</h2>
+      <ol></ol>
+    </nav>
+  </aside>
+  <article class="texto" data-texto data-slug="{{ .File.ContentBaseName }}">
+    {{ .Content }}
+    {{ partial "fontes.html" . }}
+    {{ partial "autor.html" . }}
+  </article>
+</div>
+
+{{/* Dossiê anterior e próximo, pela ordem do arquivo */}}
+{{ $todos := (where site.RegularPages "Section" "casos").ByDate }}
+{{ $i := -1 }}{{ range $k, $v := $todos }}{{ if eq $v.RelPermalink $.RelPermalink }}{{ $i = $k }}{{ end }}{{ end }}
+{{ if gt (len $todos) 1 }}
+<nav class="wrap vizinhos" aria-label="Outros dossiês">
+  {{ if gt $i 0 }}{{ with index $todos (sub $i 1) }}
+  <a class="vizinho ant" href="{{ .RelPermalink }}" rel="prev">
+    <span class="viz-rot">{{ partial "icone.html" "esq" }}Dossiê anterior</span>
+    <span class="viz-ano">{{ .Params.periodo }}</span>
+    <span class="viz-nome">{{ .Title }}</span>
+  </a>
+  {{ end }}{{ else }}<span></span>{{ end }}
+  {{ if lt $i (sub (len $todos) 1) }}{{ with index $todos (add $i 1) }}
+  <a class="vizinho prox" href="{{ .RelPermalink }}" rel="next">
+    <span class="viz-rot">Próximo dossiê{{ partial "icone.html" "dir" }}</span>
+    <span class="viz-ano">{{ .Params.periodo }}</span>
+    <span class="viz-nome">{{ .Title }}</span>
+  </a>
+  {{ end }}{{ end }}
+</nav>
+{{ end }}
 {{ end }}

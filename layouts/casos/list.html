@@ -1,10 +1,10 @@
 {{ define "main" }}
-<section class="secao secao--pagina">
-  <header class="secao__topo">
-    <p class="rotulo">Quadro de evidências</p>
-    <h1 class="secao__titulo">O arquivo</h1>
-    {{ with .Content }}<div class="secao__intro">{{ . }}</div>{{ end }}
-  </header>
+<header class="wrap cabeca-lista">
+  <nav class="trilha" aria-label="Você está em"><a href="{{ site.Home.RelPermalink }}">Início</a><span aria-hidden="true">›</span><span aria-current="page">{{ .Title }}</span></nav>
+  <h1>{{ .Title }}</h1>
+  {{ with .Description }}<p class="linha">{{ . }}</p>{{ end }}
+</header>
+<section class="wrap bloco bloco-lista">
   {{ if .Pages }}
     <div class="quadro">
       <div class="grade-fichas">

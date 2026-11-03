@@ -1,0 +1,32 @@
+{{- /* Fim da página inicial: a ficha do Indivíduo Execrável e as duas alas. */ -}}
+{{ with site.Params.autor }}
+<section class="bloco investigador" aria-labelledby="inv-t">
+  <div class="wrap inv-in">
+    <figure class="inv-foto papel" style="--giro:-2deg">
+      <span class="fita" aria-hidden="true"></span>
+      <img src="{{ "img/investigador.jpg" | relURL }}" alt="O detetive de chapéu do Indivíduo Execrável, de costas para um quadro de evidências." width="480" height="600" loading="lazy">
+      <figcaption class="papel-mao">o investigador, sem rosto</figcaption>
+    </figure>
+    <div class="inv-texto">
+      <header class="bloco-topo"><h2 id="inv-t">Quem conta</h2></header>
+      <p class="inv-nome">{{ .nome }}</p>
+      <p class="inv-funcao">{{ .funcao }}</p>
+      <p class="inv-bio">{{ .bio }}</p>
+      <div class="inv-alas">
+        <a class="inv-ala inv-ala-portal" href="{{ site.Params.portal }}">
+          <span class="inv-ala-rot">Política</span>
+          <span class="inv-ala-nome">O Portal</span>
+          <span class="inv-ala-d">Escândalos da política brasileira e internacional, do começo ao fim.</span>
+        </a>
+        <a class="inv-ala inv-ala-porao" href="{{ site.Home.RelPermalink }}" aria-current="page">
+          <span class="inv-ala-rot">Crime</span>
+          <span class="inv-ala-nome">O Porão</span>
+          <span class="inv-ala-d">Você está aqui. Crimes graves que atingiram gente comum.</span>
+        </a>
+      </div>
+      <p class="inv-siga">Siga nas redes</p>
+      {{ partial "redes.html" (dict "nomes" true) }}
+    </div>
+  </div>
+</section>
+{{ end }}

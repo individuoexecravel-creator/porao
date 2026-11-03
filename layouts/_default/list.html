@@ -1,9 +1,9 @@
 {{ define "main" }}
-<section class="secao secao--pagina">
-  <header class="secao__topo">
-    <p class="rotulo">O Porão</p>
-    <h1 class="secao__titulo">{{ .Title }}</h1>
-  </header>
+<header class="wrap cabeca-lista">
+  <nav class="trilha" aria-label="Você está em"><a href="{{ site.Home.RelPermalink }}">Início</a><span aria-hidden="true">›</span><span aria-current="page">{{ .Title }}</span></nav>
+  <h1>{{ .Title }}</h1>
+</header>
+<section class="wrap bloco bloco-lista">
   {{ if .Pages }}
     <div class="quadro"><div class="grade-fichas">{{ range .Pages }}{{ partial "ficha-card.html" . }}{{ end }}</div></div>
   {{ else }}

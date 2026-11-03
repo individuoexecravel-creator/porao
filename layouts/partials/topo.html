@@ -1,20 +1,92 @@
-<header class="topo">
-  <div class="topo__faixa">
-    <span>Indivíduo Execrável</span>
-    <span class="topo__sep" aria-hidden="true">/</span>
-    <span>Ala de crimes reais</span>
-    <a class="topo__portal" href="{{ site.Params.portal }}">Ir para O Portal <span aria-hidden="true">→</span></a>
+{{- /* Topo do site: faixa, marca, menu, Leitura, Buscar, menu do celular e busca. */ -}}
+{{- $cur := . -}}
+{{- $emCaso := eq $cur.Section "casos" -}}
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+<div class="faixa">
+  <div class="wrap faixa-in">
+    <span>{{ site.Params.autor.nome }}</span><span class="faixa-sep" aria-hidden="true">/</span><span class="faixa-ala">Ala de crimes reais</span>
+    {{ with site.Params.portal }}<a class="faixa-portal" href="{{ . }}">Ir para O Portal <span aria-hidden="true">→</span></a>{{ end }}
   </div>
-  <div class="topo__barra">
-    <a class="marca" href="{{ "/" | relURL }}" aria-label="O Porão, página inicial">
+</div>
+<header class="topo">
+  <div class="wrap topo-in">
+    <a class="marca" href="{{ site.Home.RelPermalink }}">
       {{ partial "marca.html" . }}
-      <span class="marca__nome">O&nbsp;Porão</span>
+      <span class="marca-nome">{{ site.Title }}</span>
+      <span class="marca-desc">{{ site.Params.slogan }}</span>
     </a>
-    <nav class="menu" aria-label="Principal">
-      {{ $atual := . }}
-      {{ range site.Menus.main }}
-        <a href="{{ .URL }}"{{ if $atual.IsMenuCurrent "main" . }} aria-current="page"{{ end }}>{{ .Name }}</a>
-      {{ end }}
+    <nav class="nav-principal" aria-label="Principal">
+      {{- range site.Menus.main }}
+        {{- $on := or (and .Page (eq .Page.RelPermalink $cur.RelPermalink)) (and $emCaso (eq .Name "Arquivo")) }}
+        <a href="{{ .URL }}"{{ if $on }} aria-current="page"{{ end }}>{{ .Name }}</a>
+      {{- end }}
     </nav>
+    <div class="topo-acoes">
+      <button class="botao-topo" type="button" data-leitura aria-expanded="false" aria-controls="leitura" aria-label="Ajustes de leitura: tema e tamanho do texto">
+        {{ partial "icone.html" "leitura" }}<span class="rotulo-botao">Leitura</span>
+      </button>
+      <button class="botao-topo" type="button" data-abrir-busca aria-haspopup="dialog" aria-controls="busca" aria-label="Buscar no Porão">
+        {{ partial "icone.html" "busca" }}<span class="rotulo-botao">Buscar</span><kbd class="atalho" aria-hidden="true">/</kbd>
+      </button>
+      <button class="botao-topo botao-menu" type="button" aria-expanded="false" aria-controls="menu-movel" aria-label="Menu" data-menu>
+        <span class="i-abrir">{{ partial "icone.html" "menu" }}</span><span class="i-fechar">{{ partial "icone.html" "fechar" }}</span><span class="rotulo-botao">Menu</span>
+      </button>
+    </div>
+  </div>
+  <div class="progresso" aria-hidden="true"><span></span></div>
+  <div class="leitura-painel" id="leitura" hidden>
+    <div class="wrap lp-in">
+      <div class="lp-grupo" role="group" aria-labelledby="lp-tema">
+        <p class="lp-t" id="lp-tema">Tema</p>
+        <div class="seletor">
+          <button type="button" class="seletor-op" aria-pressed="true" data-tema-op="escuro">{{ partial "icone.html" "lua" }}<span>Escuro</span></button>
+          <button type="button" class="seletor-op" aria-pressed="false" data-tema-op="claro">{{ partial "icone.html" "sol" }}<span>Claro</span></button>
+        </div>
+      </div>
+      <div class="lp-grupo" role="group" aria-labelledby="lp-tam">
+        <p class="lp-t" id="lp-tam">Tamanho do texto dos dossiês</p>
+        <div class="lp-tam">
+          <button type="button" class="botao-icone lp-a" data-tam="-1" aria-label="Diminuir o texto"><span aria-hidden="true">A−</span></button>
+          <output data-tam-valor aria-live="polite">100%</output>
+          <button type="button" class="botao-icone lp-a lp-a-mais" data-tam="1" aria-label="Aumentar o texto"><span aria-hidden="true">A+</span></button>
+        </div>
+      </div>
+      <p class="lp-nota">Fica salvo neste navegador e vale também para O Portal.</p>
+    </div>
   </div>
 </header>
+
+<div class="menu-movel" id="menu-movel" hidden>
+  <nav aria-label="Menu">
+    <a href="{{ site.Home.RelPermalink }}"{{ if $cur.IsHome }} aria-current="page"{{ end }}>{{ partial "icone.html" "inicio" }}<span>Início</span><small>{{ site.Params.description }}</small></a>
+    {{- range site.Menus.main }}
+      <a href="{{ .URL }}"{{ if or (and .Page (eq .Page.RelPermalink $cur.RelPermalink)) (and $emCaso (eq .Name "Arquivo")) }} aria-current="page"{{ end }}>{{ partial "icone.html" (.Params.icone | default "casos") }}<span>{{ .Name }}</span>{{ with .Page }}<small>{{ .Description }}</small>{{ end }}</a>
+    {{- end }}
+  </nav>
+  <div class="menu-movel-pe">
+    <p>Siga {{ site.Params.autor.nome }}</p>
+    {{ partial "redes.html" . }}
+    {{ with site.Params.portal }}<a class="menu-irmao" href="{{ . }}"><span>O Portal</span><small>A ala de escândalos políticos do {{ site.Params.autor.nome }}</small><span aria-hidden="true">→</span></a>{{ end }}
+  </div>
+</div>
+
+<dialog class="busca" id="busca" aria-label="Buscar no Porão" data-indice="{{ "index.json" | relURL }}">
+  <form method="dialog" class="busca-in" role="search">
+    <div class="busca-campo">
+      {{ partial "icone.html" "busca" }}
+      <label class="sr" for="busca-q">Buscar casos, cidades e anos</label>
+      <input id="busca-q" type="search" placeholder="Caso, cidade, estado ou ano" autocomplete="off" spellcheck="false">
+      <button class="busca-fechar" value="fechar" aria-label="Fechar busca">{{ partial "icone.html" "fechar" }}</button>
+    </div>
+    <div class="busca-dica" id="busca-dica">
+      {{- $n := len (where site.RegularPages "Section" "casos") }}
+      {{- if $n }}
+      <p>Procure pelo nome de um caso, de uma cidade ou de um estado, ou por um ano.</p>
+      {{- else }}
+      <p>O arquivo ainda está vazio. Quando o primeiro dossiê for aberto, ele aparece aqui: procure pelo nome do caso, da cidade ou pelo ano.</p>
+      {{- end }}
+    </div>
+    <ul class="busca-res" id="busca-res" aria-live="polite"></ul>
+    <p class="busca-todos"><a href="{{ "casos/" | relURL }}">Abrir o arquivo completo</a></p>
+  </form>
+</dialog>

@@ -1,30 +1,37 @@
 {{ define "main" }}
 {{ $casos := where site.RegularPages "Section" "casos" }}
 
-<section class="capa">
+{{/* ---------- Abertura ---------- */}}
+<section class="abertura" aria-labelledby="abertura-t">
   <div class="regua" aria-hidden="true">
     <span>2,00</span><span>1,90</span><span>1,80</span><span>1,70</span><span>1,60</span><span>1,50</span>
   </div>
-  <div class="capa__texto">
-    <p class="rotulo">Arquivo aberto · {{ now.Year }}</p>
-    <h1 class="capa__titulo">Toda investigação começa com um&nbsp;<span class="riscado">rascunho</span>.</h1>
-    <p class="capa__lead">O Porão reconstrói os crimes mais graves do Brasil: casos que marcaram cidades inteiras e que, muitas vezes, ficaram sem resposta. Cada dossiê é montado com processos, depoimentos e reportagens da época.</p>
-    <div class="capa__acoes">
-      <a class="botao" href="{{ "casos/" | relURL }}">Abrir o arquivo</a>
-      <a class="botao botao--linha" href="{{ "sobre/" | relURL }}">Como contamos</a>
+  <div class="wrap abertura-in">
+    <div class="abertura-texto">
+      <p class="rotulo">Arquivo aberto · {{ len $casos }} {{ if eq (len $casos) 1 }}dossiê{{ else }}dossiês{{ end }} · {{ now.Year }}</p>
+      <h1 id="abertura-t">Toda investigação começa com um&nbsp;<span class="riscado">rascunho</span>.</h1>
+      <p class="abertura-lead">O Porão reconstrói os crimes mais graves do Brasil: casos que marcaram cidades inteiras e que, muitas vezes, ficaram sem resposta. Cada dossiê é montado com inquéritos, processos, depoimentos e reportagens da época.</p>
+      <div class="abertura-acoes">
+        <a class="botao" href="{{ "casos/" | relURL }}">Abrir o arquivo</a>
+        <a class="botao botao-fino" href="{{ "sobre/" | relURL }}">Como contamos</a>
+      </div>
     </div>
+    <figure class="abertura-folha papel" style="--giro:1.8deg">
+      <span class="fita fita-esq" aria-hidden="true"></span>
+      <span class="fita fita-dir" aria-hidden="true"></span>
+      {{ partial "retrato.html" . }}
+    </figure>
   </div>
-  <figure class="capa__folha papel" style="--giro:1.8deg">
-    <span class="fita fita--esq" aria-hidden="true"></span>
-    <span class="fita fita--dir" aria-hidden="true"></span>
-    {{ partial "retrato.html" . }}
-  </figure>
 </section>
 
-<section class="secao" aria-labelledby="arquivo-t">
-  <header class="secao__topo">
-    <p class="rotulo">Quadro de evidências</p>
-    <h2 id="arquivo-t" class="secao__titulo">O arquivo</h2>
+{{/* ---------- Abertos por último ---------- */}}
+<section class="wrap bloco" aria-labelledby="novos-t">
+  <header class="bloco-topo">
+    <div>
+      <h2 id="novos-t">Abertos por último</h2>
+      <p class="bloco-desc">O quadro de evidências do Porão. Cada ficha é um caso.</p>
+    </div>
+    {{ if $casos }}<a class="link-forte" href="{{ "casos/" | relURL }}">Ver o arquivo completo</a>{{ end }}
   </header>
   {{ if $casos }}
     <div class="quadro">
@@ -32,44 +39,53 @@
         {{ range first 6 $casos.ByDate.Reverse }}{{ partial "ficha-card.html" . }}{{ end }}
       </div>
     </div>
-    {{ if gt (len $casos) 6 }}<p class="ver-todos"><a href="{{ "casos/" | relURL }}">Ver o arquivo completo →</a></p>{{ end }}
   {{ else }}
     {{ partial "vazio.html" . }}
   {{ end }}
 </section>
 
-<section class="secao" aria-labelledby="regras-t">
-  <header class="secao__topo">
-    <p class="rotulo">Antes de abrir qualquer pasta</p>
-    <h2 id="regras-t" class="secao__titulo">Três regras do Porão</h2>
+{{/* ---------- Regras ---------- */}}
+<section class="wrap bloco" aria-labelledby="regras-t">
+  <header class="bloco-topo">
+    <div>
+      <h2 id="regras-t">Três regras do Porão</h2>
+      <p class="bloco-desc">Valem para todo dossiê, antes de abrir qualquer pasta.</p>
+    </div>
+    <a class="link-forte" href="{{ "sobre/" | relURL }}">Como contamos</a>
   </header>
   <ol class="regras">
-    <li class="papel papel--ficha" style="--giro:-1.2deg">
-      <span class="regras__n">01</span>
+    <li class="papel papel-pautado" style="--giro:-1.2deg">
+      <span class="regras-n">01</span>
       <h3>As vítimas vêm primeiro</h3>
       <p>Nome, história e memória de quem sofreu o crime. O autor não vira protagonista.</p>
     </li>
-    <li class="papel papel--ficha" style="--giro:.8deg">
-      <span class="regras__n">02</span>
+    <li class="papel papel-pautado" style="--giro:.8deg">
+      <span class="regras-n">02</span>
       <h3>Só o que tem documento</h3>
-      <p>Processo, laudo, depoimento ou reportagem. O que não tem fonte é sinalizado como tal.</p>
+      <p>Inquérito, processo, laudo, depoimento ou reportagem. O que não tem fonte é sinalizado como tal.</p>
     </li>
-    <li class="papel papel--ficha" style="--giro:-.6deg">
-      <span class="regras__n">03</span>
+    <li class="papel papel-pautado" style="--giro:-.6deg">
+      <span class="regras-n">03</span>
       <h3>Sem espetáculo</h3>
       <p>Os detalhes contados são os que ajudam a entender o caso. O resto fica no arquivo.</p>
     </li>
   </ol>
 </section>
 
-<section class="secao formato" aria-labelledby="formato-t">
-  <div class="formato__quadros" aria-hidden="true">
-    <span></span><span></span><span></span><span></span>
-  </div>
-  <div class="formato__texto">
-    <p class="rotulo">Formato</p>
-    <h2 id="formato-t" class="secao__titulo">Ouça enquanto caminha pelo caso</h2>
-    <p>Cada dossiê também vira um audiocast: uma caminhada em primeira pessoa, em preto e branco, pelos lugares do crime. Documentos e imagens aparecem na tela no momento em que são citados.</p>
+{{/* ---------- Formato ---------- */}}
+<section class="wrap bloco" aria-labelledby="formato-t">
+  <header class="bloco-topo"><h2 id="formato-t">Ouça enquanto caminha pelo caso</h2></header>
+  <div class="formato">
+    <div class="formato-quadros" aria-hidden="true">
+      <span></span><span></span><span></span><span></span>
+    </div>
+    <div class="formato-texto">
+      <p>Cada dossiê também vira um audiocast: uma caminhada em primeira pessoa, em preto e branco, pelos lugares do crime. Documentos e imagens aparecem na tela no momento em que são citados.</p>
+      <p>No site, cada dossiê pode ser ouvido pelo botão <strong>Ouvir</strong>, com a voz do seu navegador, e o tamanho do texto se ajusta em <strong>Leitura</strong>, no alto da página.</p>
+    </div>
   </div>
 </section>
+
+{{/* ---------- Quem conta ---------- */}}
+{{ partial "investigador.html" . }}
 {{ end }}
