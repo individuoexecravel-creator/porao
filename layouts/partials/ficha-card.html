@@ -1,0 +1,17 @@
+{{/* Cartão de caso usado nas listas. Recebe a página do caso. */}}
+<article class="ficha-card">
+  <a href="{{ .RelPermalink }}" class="ficha-card__link">
+    <span class="alfinete" aria-hidden="true"></span>
+    <div class="ficha-card__foto">
+      {{ with .Params.capa }}
+        <img src="{{ . | relURL }}" alt="" loading="lazy">
+      {{ else }}
+        {{ partial "digital.html" . }}
+      {{ end }}
+    </div>
+    <p class="ficha-card__num">Arquivo nº {{ with .Params.numero }}{{ printf "%03d" . }}{{ else }}—{{ end }}</p>
+    <h3 class="ficha-card__titulo">{{ .Title }}</h3>
+    <p class="ficha-card__meta">{{ with .Params.local }}{{ . }}{{ end }}{{ with .Params.periodo }} · {{ . }}{{ end }}</p>
+    {{ with .Params.situacao }}<span class="carimbo-txt">{{ . }}</span>{{ end }}
+  </a>
+</article>

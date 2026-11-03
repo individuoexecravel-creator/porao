@@ -1,0 +1,19 @@
+{{ define "main" }}
+<section class="secao secao--pagina">
+  <header class="secao__topo">
+    <p class="rotulo">Quadro de evidências</p>
+    <h1 class="secao__titulo">O arquivo</h1>
+    {{ with .Content }}<div class="secao__intro">{{ . }}</div>{{ end }}
+  </header>
+  {{ if .Pages }}
+    <div class="quadro">
+      <div class="grade-fichas">
+        {{ range .Paginator.Pages }}{{ partial "ficha-card.html" . }}{{ end }}
+      </div>
+    </div>
+    {{ template "_internal/pagination.html" . }}
+  {{ else }}
+    {{ partial "vazio.html" . }}
+  {{ end }}
+</section>
+{{ end }}

@@ -1,0 +1,9 @@
+{{ define "main" }}
+<article class="secao secao--pagina pagina">
+  <header class="secao__topo">
+    <p class="rotulo">{{ with .Params.rotulo }}{{ . }}{{ else }}O Porão{{ end }}</p>
+    <h1 class="secao__titulo">{{ .Title }}</h1>
+  </header>
+  <div class="dossie__texto">{{ .Content }}</div>
+</article>
+{{ end }}

@@ -1,0 +1,70 @@
+<svg class="retrato" viewBox="0 0 400 480" role="img" aria-labelledby="retrato-t">
+  <title id="retrato-t">Esboço a lápis de um retrato falado: um homem de chapéu, com o rosto em branco e anotações à mão.</title>
+  <g filter="url(#lapis)" fill="none" stroke="#1d1d1d" stroke-linecap="round" stroke-linejoin="round">
+
+    <!-- linhas-guia do retrato falado -->
+    <g class="guia" stroke="#6b6b6b" stroke-width=".9" stroke-dasharray="5 6">
+      <line x1="200" y1="140" x2="200" y2="372" pathLength="1"/>
+      <line x1="96"  y1="222" x2="318" y2="222" pathLength="1"/>
+      <line x1="112" y1="268" x2="304" y2="268" pathLength="1"/>
+      <line x1="126" y1="304" x2="292" y2="304" pathLength="1"/>
+    </g>
+
+    <!-- sombra da aba sobre os olhos -->
+    <path class="sombra" d="M120 190 C140 228 260 228 280 190 C250 200 150 200 120 190 Z" fill="url(#hachura-cruzada)" stroke="none" opacity=".85"/>
+
+    <!-- rosto: vários contornos sobrepostos, como quem ainda está acertando -->
+    <g class="traco" stroke-width="2.1">
+      <path d="M126 196 C122 270 150 352 200 360 C250 352 278 270 274 196" pathLength="1"/>
+      <path d="M129 200 C127 275 156 348 201 356 C246 347 272 272 271 199" stroke-width="1" opacity=".55" pathLength="1"/>
+      <path d="M124 214 C118 230 116 246 124 254" stroke-width="1.4" pathLength="1"/>
+      <path d="M276 214 C282 230 284 246 276 254" stroke-width="1.4" pathLength="1"/>
+    </g>
+
+    <!-- nariz e boca apenas sugeridos -->
+    <g class="traco" stroke-width="1.3" opacity=".75">
+      <path d="M201 238 L193 272 Q200 277 209 272" pathLength="1"/>
+      <path d="M180 305 Q200 310 221 305" pathLength="1"/>
+    </g>
+
+    <!-- chapéu -->
+    <g class="traco" stroke-width="2.4">
+      <path d="M128 182 C130 116 156 82 200 80 C244 82 270 116 272 182" pathLength="1"/>
+      <path d="M166 96 Q200 122 234 96" stroke-width="1.6" pathLength="1"/>
+      <path d="M50 192 C70 168 330 168 350 192 C330 214 70 214 50 192 Z" pathLength="1"/>
+      <path d="M56 194 C90 180 310 180 344 194" stroke-width="1" opacity=".6" pathLength="1"/>
+    </g>
+    <path d="M131 156 L269 156 L272 184 L128 184 Z" fill="url(#hachura)" stroke-width="1.4"/>
+    <path d="M134 98 C130 120 129 150 131 180" stroke="url(#hachura)" stroke-width="10" opacity=".55"/>
+    <path d="M60 196 C120 210 280 210 340 196 C300 206 100 206 60 196 Z" fill="url(#hachura)" stroke="none"/>
+
+    <!-- pescoço, colarinho, gravata, ombros -->
+    <g class="traco" stroke-width="2">
+      <path d="M172 352 L168 392" pathLength="1"/>
+      <path d="M229 352 L233 392" pathLength="1"/>
+      <path d="M148 398 L200 446 L252 398" pathLength="1"/>
+      <path d="M190 446 L200 480 L211 446" pathLength="1"/>
+      <path d="M22 480 C40 432 104 404 166 392" pathLength="1"/>
+      <path d="M378 480 C360 432 296 404 234 392" pathLength="1"/>
+      <path d="M118 420 L150 480" stroke-width="1.4" pathLength="1"/>
+      <path d="M282 420 L250 480" stroke-width="1.4" pathLength="1"/>
+    </g>
+  </g>
+
+  <!-- anotações à mão -->
+  <g class="nota" fill="#262626" font-family="'Nanum Pen Script', cursive" font-size="25">
+    <text x="20" y="38">fig. 01 — retrato falado</text>
+    <text x="300" y="250" font-size="22">olhos?</text>
+    <path d="M300 243 C285 236 272 226 262 216" stroke="#262626" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+    <path d="M262 216 l9 1 M262 216 l1 8" stroke="#262626" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+    <text x="304" y="272" font-size="19" fill="#4a4a4a">(sob a aba)</text>
+    <text x="20" y="300" font-size="22">~ 1,75 m</text>
+    <text x="20" y="324" font-size="19" fill="#4a4a4a">testemunha</text>
+    <text x="20" y="344" font-size="19" fill="#4a4a4a">não viu o rosto</text>
+  </g>
+  <g class="carimbo" transform="translate(268 432) rotate(-9)">
+    <rect x="-94" y="-24" width="188" height="44" fill="none" stroke="#1d1d1d" stroke-width="2.4" rx="3"/>
+    <rect x="-88" y="-18" width="176" height="32" fill="none" stroke="#1d1d1d" stroke-width="1" rx="2"/>
+    <text x="0" y="5" text-anchor="middle" font-family="'Special Elite', monospace" font-size="17" fill="#1d1d1d" letter-spacing="1.5">NÃO IDENTIFICADO</text>
+  </g>
+</svg>

@@ -1,0 +1,28 @@
+baseURL = "https://individuoexecravel-creator.github.io/porao/"
+languageCode = "pt-br"
+title = "O Porão"
+
+[params]
+  description = "Casos criminais graves do Brasil, reconstruídos com documentos e respeito às vítimas."
+  tagline = "Crimes que o Brasil tentou esquecer."
+  portal = "https://individuoexecravel-creator.github.io/portal/"
+  autor = "Indivíduo Execrável"
+
+[taxonomies]
+  estado = "estados"
+
+[pagination]
+  pagerSize = 12
+
+[menus]
+  [[menus.main]]
+    name = "Arquivo"
+    pageRef = "/casos"
+    weight = 1
+  [[menus.main]]
+    name = "Sobre"
+    pageRef = "/sobre"
+    weight = 2
+
+[markup.goldmark.renderer]
+  unsafe = true

@@ -1,0 +1,40 @@
+{{ define "main" }}
+<article class="dossie">
+  <header class="dossie__ficha papel" style="--giro:-.6deg">
+    <span class="alfinete" aria-hidden="true"></span>
+    <p class="dossie__num">Arquivo nº {{ with .Params.numero }}{{ printf "%03d" . }}{{ else }}—{{ end }}</p>
+    <h1 class="dossie__titulo">{{ .Title }}</h1>
+    {{ with .Description }}<p class="dossie__resumo">{{ . }}</p>{{ end }}
+    <dl class="dossie__campos">
+      {{ with .Params.local }}<div><dt>Local</dt><dd>{{ . }}</dd></div>{{ end }}
+      {{ with .Params.periodo }}<div><dt>Período</dt><dd>{{ . }}</dd></div>{{ end }}
+      {{ with .Params.vitimas }}<div><dt>Vítimas</dt><dd>{{ . }}</dd></div>{{ end }}
+      {{ with .Params.situacao }}<div><dt>Situação</dt><dd>{{ . }}</dd></div>{{ end }}
+    </dl>
+    {{ with .Params.situacao }}<span class="carimbo-txt carimbo-txt--grande">{{ . }}</span>{{ end }}
+  </header>
+
+  {{ with .Params.video }}
+  <div class="dossie__video">
+    <iframe src="https://www.youtube-nocookie.com/embed/{{ . }}" title="Audiocast do caso" loading="lazy" allowfullscreen></iframe>
+  </div>
+  {{ end }}
+
+  <div class="dossie__texto">
+    {{ .Content }}
+  </div>
+
+  {{ with .Params.fontes }}
+  <section class="dossie__fontes" aria-labelledby="fontes-t">
+    <h2 id="fontes-t">Fontes</h2>
+    <ol>
+      {{ range . }}
+        <li>{{ if .url }}<a href="{{ .url }}" rel="noopener">{{ .titulo }}</a>{{ else }}{{ .titulo }}{{ end }}{{ with .veiculo }} — {{ . }}{{ end }}</li>
+      {{ end }}
+    </ol>
+  </section>
+  {{ end }}
+
+  <p class="dossie__voltar"><a href="{{ "casos/" | relURL }}">← Voltar ao arquivo</a></p>
+</article>
+{{ end }}

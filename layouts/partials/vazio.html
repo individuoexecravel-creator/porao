@@ -1,0 +1,22 @@
+{{/* Quadro de evidências vazio: aparece enquanto não houver casos publicados. */}}
+<div class="quadro quadro--vazio">
+  <svg class="quadro__fios" viewBox="0 0 1000 420" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+    <path d="M180 120 L520 70 L830 190" />
+    <path d="M520 70 L470 330" />
+  </svg>
+  <div class="papel papel--nota" style="--giro:-2.5deg">
+    <span class="alfinete" aria-hidden="true"></span>
+    <p class="papel__datilo">Nenhum dossiê aberto.</p>
+    <p class="papel__mao">o primeiro caso está sendo montado…</p>
+  </div>
+  <div class="papel papel--polaroide" style="--giro:3deg">
+    <span class="fita" aria-hidden="true"></span>
+    <div class="polaroide__foto"><span>?</span></div>
+    <p class="papel__mao">foto pendente</p>
+  </div>
+  <div class="papel papel--digital" style="--giro:-4deg">
+    <span class="alfinete" aria-hidden="true"></span>
+    {{ partial "digital.html" . }}
+    <p class="papel__mao">prova nº 07</p>
+  </div>
+</div>

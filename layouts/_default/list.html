@@ -1,0 +1,13 @@
+{{ define "main" }}
+<section class="secao secao--pagina">
+  <header class="secao__topo">
+    <p class="rotulo">O Porão</p>
+    <h1 class="secao__titulo">{{ .Title }}</h1>
+  </header>
+  {{ if .Pages }}
+    <div class="quadro"><div class="grade-fichas">{{ range .Pages }}{{ partial "ficha-card.html" . }}{{ end }}</div></div>
+  {{ else }}
+    {{ partial "vazio.html" . }}
+  {{ end }}
+</section>
+{{ end }}

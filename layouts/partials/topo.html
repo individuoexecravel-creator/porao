@@ -1,0 +1,20 @@
+<header class="topo">
+  <div class="topo__faixa">
+    <span>Indivíduo Execrável</span>
+    <span class="topo__sep" aria-hidden="true">/</span>
+    <span>Ala de crimes reais</span>
+    <a class="topo__portal" href="{{ site.Params.portal }}">Ir para O Portal <span aria-hidden="true">→</span></a>
+  </div>
+  <div class="topo__barra">
+    <a class="marca" href="{{ "/" | relURL }}" aria-label="O Porão, página inicial">
+      {{ partial "marca.html" . }}
+      <span class="marca__nome">O&nbsp;Porão</span>
+    </a>
+    <nav class="menu" aria-label="Principal">
+      {{ $atual := . }}
+      {{ range site.Menus.main }}
+        <a href="{{ .URL }}"{{ if $atual.IsMenuCurrent "main" . }} aria-current="page"{{ end }}>{{ .Name }}</a>
+      {{ end }}
+    </nav>
+  </div>
+</header>
