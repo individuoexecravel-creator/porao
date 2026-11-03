@@ -398,7 +398,7 @@ html[data-tema="claro"] .quadro { box-shadow: inset 0 0 60px rgba(60,50,40,.18);
 .mt-video iframe { width: 100%; aspect-ratio: 16 / 9; border: 1px solid var(--linha); filter: grayscale(1); }
 
 .materia { display: grid; grid-template-columns: 220px minmax(0, 720px); gap: 56px; justify-content: center; padding-top: 16px; }
-.materia-simples { grid-template-columns: minmax(0, 720px); }
+.materia-simples { grid-template-columns: minmax(0, 720px); justify-content: start; padding-top: 40px; }
 .lateral { position: relative; }
 .sumario { position: sticky; top: calc(var(--topo) + 24px); padding-left: 16px; border-left: 1px solid var(--linha); }
 .sumario h2 { margin: 0 0 8px; font: 400 .75rem var(--f-mono); letter-spacing: .18em; text-transform: uppercase; color: var(--apagado); }
