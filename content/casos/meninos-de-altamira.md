@@ -7,6 +7,9 @@ local: "Altamira (PA)"
 periodo: "1989–1993"
 vitimas: "18 a 26, conforme a fonte"
 situacao: "Contestado"
+capa: "https://commons.wikimedia.org/wiki/Special:FilePath/Rio_Xingu_-_Altamira-PA_01.jpg?width=900"
+capa_credito: "O rio Xingu em Altamira. Foto: Wikimedia Commons (licença livre)"
+capa_fonte: "https://commons.wikimedia.org/wiki/File:Rio_Xingu_-_Altamira-PA_01.jpg"
 audiocast: "em desenvolvimento"
 aviso: "Este dossiê trata de violência contra crianças. Nenhum detalhe gráfico é descrito. Os meninos que sobreviveram não são nomeados."
 fontes:
@@ -119,7 +122,7 @@ Este é o caso dos meninos de Altamira: uma história com três respostas possí
 
 Altamira fica às margens do rio Xingu, no Pará. No fim dos anos 1980, crescia mais rápido do que conseguia se organizar: gente chegando pela Transamazônica, garimpo, madeira, bairros novos sem asfalto e sem luz. Em território, é o maior município do Brasil, com cerca de 159 mil km², maior do que vários estados.
 
-{{< foto commons="Rio_Xingu_-_Altamira-PA_01.jpg" legenda="O rio Xingu em Altamira." alt="Rio Xingu visto de Altamira, no Pará" >}}
+{{< foto commons="Rio_Xingu_-_Altamira-PA_02.jpg" legenda="O rio Xingu em Altamira." alt="Rio Xingu visto de Altamira, no Pará" >}}
 
 O Estado não acompanhava. Segundo a antropóloga Paula Lacerda, que estudou o caso por anos, havia uma única delegacia responsável por uma área enorme. Hospitais eram poucos, e boa parte da assistência social vinha da Igreja Católica, da Prelazia do Xingu.
 

@@ -52,7 +52,7 @@
     <div class="mt-ficha papel" style="--giro:1.4deg">
       <span class="alfinete" aria-hidden="true"></span>
       {{ with .Params.capa }}
-      <div class="mt-foto"><img src="{{ . | relURL }}" alt="" fetchpriority="high"></div>
+      <figure class="mt-foto"><img src="{{ . | relURL }}" alt="" fetchpriority="high" referrerpolicy="no-referrer">{{ with $.Params.capa_credito }}<figcaption>{{ with $.Params.capa_fonte }}<a href="{{ . }}" rel="noopener" target="_blank">{{ end }}{{ $.Params.capa_credito }}{{ with $.Params.capa_fonte }}</a>{{ end }}</figcaption>{{ end }}</figure>
       {{ end }}
       <p class="mt-ficha-num">Arquivo nº {{ $num }}</p>
       <dl class="mt-campos">

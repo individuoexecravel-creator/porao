@@ -3,7 +3,7 @@
   <a href="{{ .RelPermalink }}" class="ficha-card-link" data-lido="{{ .File.ContentBaseName }}">
     <span class="alfinete" aria-hidden="true"></span>
     <span class="ficha-card-foto">
-      {{ with .Params.capa }}<img src="{{ . | relURL }}" alt="" loading="lazy">{{ else }}{{ partial "digital.html" . }}{{ end }}
+      {{ with .Params.capa }}<img src="{{ . | relURL }}" alt="" loading="lazy" referrerpolicy="no-referrer">{{ else }}{{ partial "digital.html" . }}{{ end }}
     </span>
     <span class="ficha-card-texto">
       <span class="ficha-card-num">Arquivo nº {{ with .Params.numero }}{{ printf "%03d" (int .) }}{{ else }}—{{ end }}</span>
